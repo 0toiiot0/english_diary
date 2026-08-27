@@ -55,5 +55,5 @@ export function buildUserMessage(diaryText: string): string {
 ${diaryText}
 </diary>
 
-위 일기를 첨삭하고 submit_review 도구로 결과를 제출하세요.`;
+위 일기를 첨삭한 JSON 결과를 응답하세요.`;
 }

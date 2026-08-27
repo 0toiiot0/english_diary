@@ -92,7 +92,7 @@ export default function SettingsPage() {
           이 일기는 이 브라우저에만 저장됩니다. 브라우저 데이터를 지우면 사라집니다.
         </p>
         <p className="mt-1 text-xs leading-relaxed text-text-secondary">
-          첨삭 요청 시 일기 본문이 Anthropic API로 전송됩니다. 저희 서버에는 저장되지 않습니다.
+          첨삭 요청 시 일기 본문이 Google Gemini API로 전송됩니다. 저희 서버에는 저장되지 않습니다.
         </p>
 
         <div className="mt-3">

@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
-import Anthropic from '@anthropic-ai/sdk';
-import { reviewDiary, SchemaError, MissingApiKeyError } from '@/lib/claude';
+import { ApiError } from '@google/genai';
+import { reviewDiary, SchemaError, MissingApiKeyError } from '@/lib/gemini';
 import { matchCorrections } from '@/lib/match';
 import { checkRateLimit } from '@/lib/rate-limit';
 import { hashText } from '@/lib/hash';
@@ -116,20 +116,25 @@ function handleError(err: unknown): NextResponse<ApiErrorBody> {
   if (err instanceof Error && err.name === 'AbortError') {
     return errorResponse('TIMEOUT', 504);
   }
-  if (
-    err instanceof MissingApiKeyError ||
-    err instanceof Anthropic.AuthenticationError ||
-    err instanceof Anthropic.PermissionDeniedError
-  ) {
+  if (err instanceof MissingApiKeyError) {
     return errorResponse('AUTH', 502);
   }
-  if (err instanceof Anthropic.RateLimitError) {
-    return errorResponse('RATE_LIMIT', 429);
+  if (err instanceof ApiError) {
+    // @google/genai의 ApiError.status는 HTTP 상태코드를 그대로 담는다.
+    if (err.status === 401 || err.status === 403) {
+      return errorResponse('AUTH', 502);
+    }
+    if (err.status === 429) {
+      return errorResponse('RATE_LIMIT', 429);
+    }
+    if (err.status >= 500) {
+      return errorResponse('SERVER', 502);
+    }
+    console.error('[review] gemini api error', err.status, err.message);
+    return errorResponse('SERVER', 500);
   }
-  if (err instanceof Anthropic.APIConnectionTimeoutError) {
-    return errorResponse('TIMEOUT', 504);
-  }
-  if (err instanceof Anthropic.APIConnectionError) {
+  if (err instanceof TypeError) {
+    // fetch 자체가 실패한 경우(DNS·연결 거부 등)는 상태코드 없는 TypeError로 온다.
     return errorResponse('NETWORK', 502);
   }
   // 원본 오류 메시지·스택은 클라이언트로 전달하지 않는다 (ER-11). 서버 로그에만 남긴다.
