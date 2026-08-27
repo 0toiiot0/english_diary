@@ -1,0 +1,148 @@
+@import "tailwindcss";
+
+:root {
+  /* 기본 팔레트 (4.3) — 미색 종이 톤, 빨강 배제 */
+  --bg: #fbfaf7;
+  --surface: #ffffff;
+  --border: #e7e4dd;
+  --accent: #1f6f5c;
+  --accent-soft: #e6f0ec;
+  --text-primary: #1c1b18;
+  --text-secondary: #55524b;
+  --text-tertiary: #8b877d;
+  --skeleton: #eeebe4;
+
+  /* 오류 유형색 (빨강 배제, 4종 구분) */
+  --err-spelling: #e8833a;
+  --err-spelling-strong: #9a4e10;
+  --err-spelling-tint: #fdf2e8;
+  --err-grammar: #7c5cd6;
+  --err-grammar-strong: #4b2fa8;
+  --err-grammar-tint: #f2eefc;
+  --err-natural: #2a9d8f;
+  --err-natural-strong: #14655b;
+  --err-natural-tint: #e8f5f3;
+  --err-punct: #8a94a6;
+  --err-punct-strong: #4a5262;
+  --err-punct-tint: #f0f2f5;
+
+  --radius-card: 12px;
+  --radius-badge: 6px;
+  --radius-button: 10px;
+  --shadow-card: 0 1px 3px rgba(28, 27, 24, 0.06);
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-tertiary: var(--text-tertiary);
+  --color-skeleton: var(--skeleton);
+
+  --color-err-spelling: var(--err-spelling);
+  --color-err-spelling-strong: var(--err-spelling-strong);
+  --color-err-spelling-tint: var(--err-spelling-tint);
+  --color-err-grammar: var(--err-grammar);
+  --color-err-grammar-strong: var(--err-grammar-strong);
+  --color-err-grammar-tint: var(--err-grammar-tint);
+  --color-err-natural: var(--err-natural);
+  --color-err-natural-strong: var(--err-natural-strong);
+  --color-err-natural-tint: var(--err-natural-tint);
+  --color-err-punct: var(--err-punct);
+  --color-err-punct-strong: var(--err-punct-strong);
+  --color-err-punct-tint: var(--err-punct-tint);
+
+  --font-sans: var(--font-pretendard), -apple-system, "Malgun Gothic", sans-serif;
+  --font-serif: var(--font-lora), Georgia, "Times New Roman", serif;
+
+  --radius-card: var(--radius-card);
+  --radius-badge: var(--radius-badge);
+  --radius-button: var(--radius-button);
+}
+
+html {
+  background: var(--bg);
+}
+
+body {
+  background: var(--bg);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+}
+
+/* 일기 본문 / 하이라이트 뷰 — 영문 세리프, 넉넉한 행간 (밑줄이 아랫줄에 닿지 않도록) */
+.diary-text {
+  font-family: var(--font-serif);
+  line-height: 1.9;
+  font-size: 17px;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+@media (min-width: 1024px) {
+  .diary-text {
+    font-size: 18px;
+  }
+}
+
+/* 하이라이트 — 색만으로 유형을 구분하지 않는다. 밑줄 스타일도 유형별로 다르게 준다 (5.11) */
+.hl {
+  text-underline-offset: 4px;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background-color 120ms ease-out;
+}
+.hl:hover,
+.hl.hl-active {
+  background-color: var(--hl-tint);
+}
+.hl-spelling {
+  --hl-tint: var(--err-spelling-tint);
+  text-decoration: underline wavy var(--err-spelling);
+  text-decoration-thickness: 2px;
+}
+.hl-grammar {
+  --hl-tint: var(--err-grammar-tint);
+  text-decoration: underline dotted var(--err-grammar);
+  text-decoration-thickness: 2px;
+}
+.hl-natural {
+  --hl-tint: var(--err-natural-tint);
+  text-decoration: underline solid var(--err-natural);
+  text-decoration-thickness: 2px;
+}
+.hl-punctuation {
+  --hl-tint: var(--err-punct-tint);
+  text-decoration: underline double var(--err-punct);
+  text-decoration-thickness: 2px;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+.skeleton {
+  background: linear-gradient(90deg, var(--skeleton) 25%, #f7f5f0 37%, var(--skeleton) 63%);
+  background-size: 400% 100%;
+  animation: shimmer 1.4s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .skeleton {
+    animation: none;
+  }
+  * {
+    scroll-behavior: auto !important;
+  }
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
