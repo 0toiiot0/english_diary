@@ -29,7 +29,7 @@ export function StreakBadge() {
 
   return (
     <span
-      className="inline-flex items-center gap-1 rounded-full bg-accent-soft px-3 py-1 text-xs font-semibold text-accent"
+      className="inline-flex items-center gap-1 rounded-full bg-accent-soft px-3 py-1 text-xs font-semibold text-accent-text"
       role="status"
     >
       🔥 {current}일 연속

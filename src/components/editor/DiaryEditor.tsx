@@ -188,7 +188,7 @@ export function DiaryEditor() {
           <span>
             {charCount}/{MAX_LENGTH}자 · {wordCount} 단어
           </span>
-          {showSavedFlash && <span className="text-accent">방금 저장됨</span>}
+          {showSavedFlash && <span className="text-accent-text">방금 저장됨</span>}
           {showCappedNotice && <span className="text-[var(--err-spelling-strong)]">3,000자를 넘을 수 없어요.</span>}
         </div>
         {showKoreanNotice && (

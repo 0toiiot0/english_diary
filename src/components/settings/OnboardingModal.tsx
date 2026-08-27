@@ -36,7 +36,7 @@ export function OnboardingModal() {
               key={opt.value}
               type="button"
               onClick={() => finish(opt.value)}
-              className="min-h-11 w-full rounded-[var(--radius-button)] border border-border px-3 py-2 text-left hover:border-accent hover:bg-accent-soft"
+              className="min-h-11 w-full rounded-[var(--radius-button)] border border-border px-3 py-2 text-left hover:border-accent-text hover:bg-accent-soft"
             >
               <span className="text-sm font-semibold text-text-primary">{opt.label}</span>
               <span className="ml-2 text-xs text-text-tertiary">{opt.desc}</span>

@@ -34,7 +34,7 @@ export function NavLinks({ variant }: { variant: 'top' | 'bottom' }) {
               className={[
                 'flex flex-1 flex-col items-center justify-center gap-0.5 py-2 text-xs',
                 'min-h-[44px]',
-                active ? 'text-accent font-semibold' : 'text-text-tertiary',
+                active ? 'text-accent-text font-semibold' : 'text-text-tertiary',
               ].join(' ')}
               aria-current={active ? 'page' : undefined}
             >
@@ -56,7 +56,7 @@ export function NavLinks({ variant }: { variant: 'top' | 'bottom' }) {
             href={item.href}
             className={[
               'rounded-[var(--radius-button)] px-3 py-2 text-sm font-medium',
-              active ? 'bg-accent-soft text-accent' : 'text-text-secondary hover:bg-accent-soft/60',
+              active ? 'bg-accent-soft text-accent-text' : 'text-text-secondary hover:bg-accent-soft/60',
             ].join(' ')}
             aria-current={active ? 'page' : undefined}
           >

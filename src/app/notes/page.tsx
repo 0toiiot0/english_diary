@@ -36,7 +36,7 @@ export default function NotesPage() {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="표현·뜻으로 검색"
-          className="mt-4 w-full rounded-[var(--radius-button)] border border-border bg-surface px-3 py-2.5 text-sm outline-none focus-visible:border-accent"
+          className="mt-4 w-full rounded-[var(--radius-button)] border border-border bg-surface px-3 py-2.5 text-sm outline-none focus-visible:border-accent-text"
         />
       )}
 
@@ -71,7 +71,7 @@ export default function NotesPage() {
               <p className="mt-2 font-serif text-sm italic text-text-secondary">&ldquo;{note.rewritten}&rdquo;</p>
               <div className="mt-3 flex items-center justify-between text-xs text-text-tertiary">
                 <span>{formatDate(note.savedAt)} 저장</span>
-                <Link href={`/diary/${note.sourceDate}`} className="font-medium text-accent hover:underline">
+                <Link href={`/diary/${note.sourceDate}`} className="font-medium text-accent-text hover:underline">
                   처음 본 일기 보기
                 </Link>
               </div>

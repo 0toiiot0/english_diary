@@ -46,7 +46,7 @@ export default function DiaryDetailPage({ params }: { params: Promise<{ date: st
       <EmptyState
         title="해당 날짜의 일기를 찾을 수 없어요"
         action={
-          <Link href="/diary" className="mt-2 inline-flex min-h-11 items-center text-sm font-semibold text-accent">
+          <Link href="/diary" className="mt-2 inline-flex min-h-11 items-center text-sm font-semibold text-accent-text">
             일기 목록으로 돌아가기
           </Link>
         }

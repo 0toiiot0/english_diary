@@ -17,7 +17,7 @@ export function ReviewSkeleton() {
 
   return (
     <div aria-busy="true" role="status" className="mt-6 space-y-4">
-      <p className="text-sm font-medium text-accent">{STAGES[stageIndex]}</p>
+      <p className="text-sm font-medium text-accent-text">{STAGES[stageIndex]}</p>
       {[0, 1, 2].map((i) => (
         <div
           key={i}

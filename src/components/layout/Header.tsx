@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { StreakBadge } from '@/components/streak/StreakBadge';
 import { NavLinks } from '@/components/layout/NavLinks';
+import { ThemeToggle } from '@/components/layout/ThemeToggle';
 
 export function Header() {
   return (
@@ -12,7 +13,10 @@ export function Header() {
           </Link>
           <StreakBadge />
         </div>
-        <NavLinks variant="top" />
+        <div className="flex items-center gap-2">
+          <NavLinks variant="top" />
+          <ThemeToggle />
+        </div>
       </div>
     </header>
   );

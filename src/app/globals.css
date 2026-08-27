@@ -6,6 +6,10 @@
   --surface: #ffffff;
   --border: #e7e4dd;
   --accent: #1f6f5c;
+  /* --accent-text: 링크·라벨 등 "글자로 쓰이는" 액센트 색. --accent는 버튼 배경(항상 흰 글자와 짝)
+     역할로 두 테마에서 고정하고, 텍스트로 쓰일 때만 다크 모드에서 밝은 색으로 바꾼다 —
+     그래야 어두운 배경 위에서도, 흰 글자를 얹은 버튼 배경으로도 둘 다 대비가 나온다. */
+  --accent-text: #1f6f5c;
   --accent-soft: #e6f0ec;
   --text-primary: #1c1b18;
   --text-secondary: #55524b;
@@ -26,10 +30,75 @@
   --err-punct-strong: #4a5262;
   --err-punct-tint: #f0f2f5;
 
+  --skeleton-shine: #f7f5f0;
+
   --radius-card: 12px;
   --radius-badge: 6px;
   --radius-button: 10px;
   --shadow-card: 0 1px 3px rgba(28, 27, 24, 0.06);
+
+  color-scheme: light;
+}
+
+/* 다크 모드 — 헤더의 토글 버튼이 <html data-theme="dark">를 설정한다 (ThemeToggle.tsx).
+   토글을 아직 누른 적 없는 첫 방문자는 OS 설정(prefers-color-scheme)을 따른다.
+   두 블록은 값이 같아야 한다 — 토글 미사용 시(미디어 쿼리)와 명시적 선택 시(속성 선택자) 둘 다 커버. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --bg: #1b1a17;
+    --surface: #232220;
+    --border: #34322d;
+    --accent-text: #5fcfae;
+    --accent-soft: #1e332c;
+    --text-primary: #f2f0ea;
+    --text-secondary: #b8b4a9;
+    --text-tertiary: #837e72;
+    --skeleton: #2c2a26;
+    --skeleton-shine: #37342e;
+
+    --err-spelling: #f0a05c;
+    --err-spelling-strong: #ffd9b0;
+    --err-spelling-tint: #3a2a18;
+    --err-grammar: #a98bef;
+    --err-grammar-strong: #d9c9ff;
+    --err-grammar-tint: #2a2440;
+    --err-natural: #4fc4b5;
+    --err-natural-strong: #b8ece3;
+    --err-natural-tint: #17332e;
+    --err-punct: #a7afc0;
+    --err-punct-strong: #d7dbe5;
+    --err-punct-tint: #2b2e38;
+
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme='dark'] {
+  --bg: #1b1a17;
+  --surface: #232220;
+  --border: #34322d;
+  --accent-text: #5fcfae;
+  --accent-soft: #1e332c;
+  --text-primary: #f2f0ea;
+  --text-secondary: #b8b4a9;
+  --text-tertiary: #837e72;
+  --skeleton: #2c2a26;
+  --skeleton-shine: #37342e;
+
+  --err-spelling: #f0a05c;
+  --err-spelling-strong: #ffd9b0;
+  --err-spelling-tint: #3a2a18;
+  --err-grammar: #a98bef;
+  --err-grammar-strong: #d9c9ff;
+  --err-grammar-tint: #2a2440;
+  --err-natural: #4fc4b5;
+  --err-natural-strong: #b8ece3;
+  --err-natural-tint: #17332e;
+  --err-punct: #a7afc0;
+  --err-punct-strong: #d7dbe5;
+  --err-punct-tint: #2b2e38;
+
+  color-scheme: dark;
 }
 
 @theme inline {
@@ -37,6 +106,7 @@
   --color-surface: var(--surface);
   --color-border: var(--border);
   --color-accent: var(--accent);
+  --color-accent-text: var(--accent-text);
   --color-accent-soft: var(--accent-soft);
   --color-text-primary: var(--text-primary);
   --color-text-secondary: var(--text-secondary);
@@ -129,7 +199,7 @@ body {
   }
 }
 .skeleton {
-  background: linear-gradient(90deg, var(--skeleton) 25%, #f7f5f0 37%, var(--skeleton) 63%);
+  background: linear-gradient(90deg, var(--skeleton) 25%, var(--skeleton-shine) 37%, var(--skeleton) 63%);
   background-size: 400% 100%;
   animation: shimmer 1.4s ease-in-out infinite;
 }
@@ -143,6 +213,6 @@ body {
 }
 
 :focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--accent-text);
   outline-offset: 2px;
 }

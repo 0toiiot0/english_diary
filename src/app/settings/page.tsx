@@ -76,7 +76,7 @@ export default function SettingsPage() {
               aria-pressed={settings.level === opt.value}
               className={`min-h-11 flex-1 rounded-[var(--radius-button)] border px-3 text-sm font-medium ${
                 settings.level === opt.value
-                  ? 'border-accent bg-accent-soft text-accent'
+                  ? 'border-accent-text bg-accent-soft text-accent-text'
                   : 'border-border text-text-secondary hover:bg-accent-soft/60'
               }`}
             >

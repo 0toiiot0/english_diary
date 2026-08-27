@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import { Lora } from "next/font/google";
 import localFont from "next/font/local";
+import Script from "next/script";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { NavLinks } from "@/components/layout/NavLinks";
 import { StorageBanner } from "@/components/layout/StorageBanner";
+import { THEME_INIT_SCRIPT } from "@/lib/theme";
 
 const lora = Lora({
   variable: "--font-lora",
@@ -28,6 +30,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="ko" className={`${lora.variable} ${pretendard.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col bg-bg text-text-primary">
+        {/* 다크모드 값을 hydration 전에 <html data-theme>에 심어 첫 페인트가 깜빡이지 않게 한다. */}
+        <Script id="theme-init" strategy="beforeInteractive">
+          {THEME_INIT_SCRIPT}
+        </Script>
         <StorageBanner />
         <Header />
         <main className="mx-auto w-full max-w-5xl flex-1 px-4 pb-24 pt-4 md:pb-10">

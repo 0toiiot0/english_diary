@@ -29,7 +29,7 @@ export function ExpressionCard({
         <div>
           <p className="font-serif text-[17px] font-semibold text-text-primary">{e.expression}</p>
           <div className="mt-1 flex gap-1.5">
-            <span className="rounded-[var(--radius-badge)] bg-accent-soft px-2 py-0.5 text-xs font-medium text-accent">
+            <span className="rounded-[var(--radius-badge)] bg-accent-soft px-2 py-0.5 text-xs font-medium text-accent-text">
               {KIND_LABEL[e.kind]}
             </span>
             <span className="rounded-[var(--radius-badge)] border border-border px-2 py-0.5 text-xs text-text-tertiary">
@@ -43,7 +43,7 @@ export function ExpressionCard({
           aria-pressed={saved}
           aria-label={saved ? '표현 노트에서 제거' : '표현 노트에 저장'}
           className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-xl transition-transform motion-safe:active:scale-90 ${
-            saved ? 'text-accent' : 'text-text-tertiary hover:text-accent'
+            saved ? 'text-accent-text' : 'text-text-tertiary hover:text-accent-text'
           }`}
         >
           {saved ? '🔖' : '📑'}
@@ -58,7 +58,7 @@ export function ExpressionCard({
       </div>
 
       <div className="mt-3 rounded-[var(--radius-badge)] bg-accent-soft p-3">
-        <p className="text-xs font-medium text-accent">이렇게 쓸 수도 있어요</p>
+        <p className="text-xs font-medium text-accent-text">이렇게 쓸 수도 있어요</p>
         <p className="font-serif text-sm text-text-primary">&ldquo;{e.rewritten}&rdquo;</p>
       </div>
     </div>

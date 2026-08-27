@@ -79,7 +79,7 @@ export function ReviewResult({
         <button
           type="button"
           onClick={() => setShowFullCorrected((v) => !v)}
-          className="mt-2 min-h-11 text-sm font-medium text-accent underline underline-offset-4"
+          className="mt-2 min-h-11 text-sm font-medium text-accent-text underline underline-offset-4"
         >
           {showFullCorrected ? '수정문 전체 보기 닫기' : '수정문 전체 보기'}
         </button>

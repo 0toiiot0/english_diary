@@ -37,7 +37,7 @@ export function CorrectionCard({
     <div
       id={`correction-${c.id}`}
       className={`flex gap-3 rounded-[var(--radius-card)] border bg-surface p-4 shadow-[var(--shadow-card)] transition-colors ${
-        active ? 'border-accent' : 'border-border'
+        active ? 'border-accent-text' : 'border-border'
       }`}
       onMouseEnter={() => c.matched && onHover(c.id)}
       onMouseLeave={() => c.matched && onHover(null)}

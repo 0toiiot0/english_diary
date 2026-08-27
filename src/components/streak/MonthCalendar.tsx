@@ -94,7 +94,7 @@ export function MonthCalendar() {
                 isWritten
                   ? 'bg-accent text-white font-semibold hover:opacity-90 cursor-pointer'
                   : 'text-text-tertiary cursor-default',
-                isToday && !isWritten ? 'ring-1 ring-accent' : '',
+                isToday && !isWritten ? 'ring-1 ring-accent-text' : '',
               ].join(' ')}
             >
               {cell.day}

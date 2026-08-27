@@ -44,7 +44,7 @@ export default function DiaryListPage() {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="본문에서 검색"
-          className="mt-4 w-full rounded-[var(--radius-button)] border border-border bg-surface px-3 py-2.5 text-sm outline-none focus-visible:border-accent"
+          className="mt-4 w-full rounded-[var(--radius-button)] border border-border bg-surface px-3 py-2.5 text-sm outline-none focus-visible:border-accent-text"
         />
       )}
 
@@ -75,7 +75,7 @@ export default function DiaryListPage() {
                   </p>
                 </Link>
                 {entry.review && (
-                  <span className="shrink-0 rounded-[var(--radius-badge)] bg-accent-soft px-2 py-1 text-xs font-medium text-accent">
+                  <span className="shrink-0 rounded-[var(--radius-badge)] bg-accent-soft px-2 py-1 text-xs font-medium text-accent-text">
                     오류 {entry.review.corrections.length}개
                   </span>
                 )}
