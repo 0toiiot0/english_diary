@@ -216,3 +216,13 @@ body {
   outline: 2px solid var(--accent-text);
   outline-offset: 2px;
 }
+
+/* 일기 PDF 내보내기 (/diary/print) — 다크모드 여부와 무관하게 항상 흰 배경에 인쇄한다. */
+@media print {
+  @page {
+    margin: 2cm;
+  }
+  body {
+    background: #fff !important;
+  }
+}

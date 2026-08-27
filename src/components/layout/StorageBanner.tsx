@@ -14,7 +14,7 @@ export function StorageBanner() {
   if (!unavailable) return null;
 
   return (
-    <div role="alert" className="bg-[var(--err-spelling-tint)] px-4 py-2 text-center text-xs font-medium text-[var(--err-spelling-strong)]">
+    <div role="alert" className="bg-[var(--err-spelling-tint)] px-4 py-2 text-center text-xs font-medium text-[var(--err-spelling-strong)] print:hidden">
       이 브라우저에서는 일기가 저장되지 않습니다. (시크릿 모드이거나 저장소가 차단되어 있어요)
     </div>
   );

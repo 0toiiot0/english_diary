@@ -22,7 +22,7 @@ export function NavLinks({ variant }: { variant: 'top' | 'bottom' }) {
     return (
       <nav
         aria-label="주요 메뉴"
-        className="fixed inset-x-0 bottom-0 z-40 flex border-t border-border bg-surface md:hidden"
+        className="fixed inset-x-0 bottom-0 z-40 flex border-t border-border bg-surface print:hidden md:hidden"
         style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}
       >
         {NAV_ITEMS.map((item) => {
@@ -47,7 +47,7 @@ export function NavLinks({ variant }: { variant: 'top' | 'bottom' }) {
   }
 
   return (
-    <nav aria-label="주요 메뉴" className="hidden items-center gap-1 md:flex">
+    <nav aria-label="주요 메뉴" className="hidden items-center gap-1 print:hidden md:flex">
       {NAV_ITEMS.map((item) => {
         const active = isActive(pathname, item.href);
         return (

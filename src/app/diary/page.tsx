@@ -36,7 +36,17 @@ export default function DiaryListPage() {
 
   return (
     <div className="mx-auto max-w-2xl">
-      <h1 className="text-2xl font-bold text-text-primary md:text-[28px]">일기 목록</h1>
+      <div className="flex items-center justify-between gap-3">
+        <h1 className="text-2xl font-bold text-text-primary md:text-[28px]">일기 목록</h1>
+        {entries.length > 0 && (
+          <Link
+            href="/diary/print"
+            className="shrink-0 rounded-[var(--radius-button)] border border-border px-3 py-2 text-sm font-medium text-text-secondary hover:bg-accent-soft"
+          >
+            PDF로 내보내기
+          </Link>
+        )}
+      </div>
 
       {entries.length > 0 && (
         <input

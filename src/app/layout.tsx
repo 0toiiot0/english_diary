@@ -36,7 +36,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </Script>
         <StorageBanner />
         <Header />
-        <main className="mx-auto w-full max-w-5xl flex-1 px-4 pb-24 pt-4 md:pb-10">
+        <main className="mx-auto w-full max-w-5xl flex-1 px-4 pb-24 pt-4 print:p-0 md:pb-10">
           {children}
         </main>
         <NavLinks variant="bottom" />
